@@ -11,6 +11,7 @@ import SpriteKit
 
 class RNMovingGround: SKSpriteNode {
     
+    // Ground color segments
     let NUMBER_OF_SEGMENTS = 20
     let COLOR_ONE = UIColor(red: 88.0/255.0, green: 148.0/255.0, blue: 87.0/255.0, alpha: 1.0)
     let COLOR_TWO = UIColor(red: 120.0/255.0, green: 195.0/255.0, blue: 118.0/255.0, alpha: 1.0)
@@ -40,7 +41,11 @@ class RNMovingGround: SKSpriteNode {
     }
     
     func startMovement(){
+        // Sequence to move left and then reset the position of the ground
         let moveLeft = SKAction.moveBy(x: -frame.size.width / 2, y: 0, duration: 1.0)
-        run(moveLeft)
+        let resetPosition = SKAction.moveTo(x: 0, duration: 0)
+        
+        let moveSequence = SKAction.sequence([moveLeft, resetPosition])
+        run(SKAction.repeatForever(moveSequence))
     }
 }
