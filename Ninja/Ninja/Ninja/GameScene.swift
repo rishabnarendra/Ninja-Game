@@ -16,8 +16,8 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         backgroundColor = UIColor(red: 159.0/255.0, green: 201.0/255.0, blue: 244.0/255.0, alpha: 1.0)
-        let ground = SKSpriteNode(color: UIColor.brown, size: CGSize(width: view.frame.size.width, height: 20))
-        ground.position = view.center
+        let ground = RNMovingGround(size: CGSize(width: view.frame.width, height: 20))
+        ground.position = CGPoint(x: 0, y: view.frame.size.height / 2)
         addChild(ground)
     }
     
