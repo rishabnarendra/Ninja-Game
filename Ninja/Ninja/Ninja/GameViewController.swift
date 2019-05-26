@@ -2,7 +2,7 @@
 //  GameViewController.swift
 //  Ninja
 //
-//  Created by Rishab Narendra  on 5/23/19.
+//  Created by Rishab Narendra  on 5/25/19.
 //  Copyright © 2019 Rishab Narendra . All rights reserved.
 //
 
@@ -13,23 +13,7 @@ import GameplayKit
 class GameViewController: UIViewController {
 
     override func viewDidLoad() {
-        super.viewDidLoad()
         
-        if let view = self.view as! SKView? {
-            // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") {
-                // Set the scale mode to scale to fit the window
-                scene.scaleMode = .aspectFill
-                
-                // Present the scene
-                view.presentScene(scene)
-            }
-            
-            view.ignoresSiblingOrder = true
-            
-            view.showsFPS = true
-            view.showsNodeCount = true
-        }
     }
 
     override var shouldAutorotate: Bool {
