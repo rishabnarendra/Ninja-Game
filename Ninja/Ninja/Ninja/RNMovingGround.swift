@@ -38,4 +38,9 @@ class RNMovingGround: SKSpriteNode {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func startMovement(){
+        let moveLeft = SKAction.moveBy(x: -frame.size.width / 2, y: 0, duration: 1.0)
+        run(moveLeft)
+    }
 }
