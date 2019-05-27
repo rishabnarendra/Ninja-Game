@@ -17,6 +17,7 @@
 		AFA2D4A6229904C600AC0869 /* NinjaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA2D4A5229904C600AC0869 /* NinjaTests.swift */; };
 		AFA2D4B1229904C600AC0869 /* NinjaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA2D4B0229904C600AC0869 /* NinjaUITests.swift */; };
 		AFA2D4BF229B47A900AC0869 /* RNMovingGround.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA2D4BE229B47A900AC0869 /* RNMovingGround.swift */; };
+		AFA2D4C1229B81F000AC0869 /* RNHero.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA2D4C0229B81F000AC0869 /* RNHero.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		AFA2D4B0229904C600AC0869 /* NinjaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NinjaUITests.swift; sourceTree = "<group>"; };
 		AFA2D4B2229904C600AC0869 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFA2D4BE229B47A900AC0869 /* RNMovingGround.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNMovingGround.swift; sourceTree = "<group>"; };
+		AFA2D4C0229B81F000AC0869 /* RNHero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNHero.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				AFA2D499229904C600AC0869 /* LaunchScreen.storyboard */,
 				AFA2D49C229904C600AC0869 /* Info.plist */,
 				AFA2D4BE229B47A900AC0869 /* RNMovingGround.swift */,
+				AFA2D4C0229B81F000AC0869 /* RNHero.swift */,
 			);
 			path = Ninja;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				AFA2D491229904C500AC0869 /* GameScene.swift in Sources */,
 				AFA2D493229904C500AC0869 /* GameViewController.swift in Sources */,
 				AFA2D4BF229B47A900AC0869 /* RNMovingGround.swift in Sources */,
+				AFA2D4C1229B81F000AC0869 /* RNHero.swift in Sources */,
 				AFA2D48B229904C500AC0869 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
