@@ -11,8 +11,14 @@ import GameplayKit
 
 class GameScene: SKScene {
     
+    // Game ground
     var movingGround: RNMovingGround!
+    
+    // Hero character
     var hero: RNHero!
+    
+    // Has the game started
+    var isStarted = false
     
     override func didMove(to view: SKView) {
         backgroundColor = UIColor(red: 159.0/255.0, green: 201.0/255.0, blue: 244.0/255.0, alpha: 1.0)
@@ -27,7 +33,18 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if !isStarted {
+            start()
+        }
+        else {
+            hero.flip()
+        }
+    }
+    
+    func start() {
+        isStarted = true
         hero.stop()
-        hero.flip()
+        hero.startRunning()
+        movingGround.startMovement()
     }
 }
