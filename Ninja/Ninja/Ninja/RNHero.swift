@@ -71,4 +71,17 @@ class RNHero: SKSpriteNode {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // Allows character to breath
+    func breath() {
+        let breathOut = SKAction.moveBy(x: 0, y: -5, duration: 1)
+        let breathIn = SKAction.moveBy(x: 0, y: 5, duration: 1)
+        let breath = SKAction.sequence([breathOut, breathIn])
+        body.run(SKAction.repeatForever(breath))
+    }
+    
+    // Stops character breathing upon screen click 
+    func stop() {
+        body.removeAllActions()
+    }
 }

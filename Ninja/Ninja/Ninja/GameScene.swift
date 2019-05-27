@@ -23,9 +23,10 @@ class GameScene: SKScene {
         hero = RNHero()
         hero.position = CGPoint(x: 70, y: movingGround.position.y + movingGround.frame.size.height / 2 + hero.frame.size.height / 2)
         addChild(hero)
+        hero.breath()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        movingGround.startMovement()
+        hero.stop()
     }
 }
