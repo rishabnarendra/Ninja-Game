@@ -11,10 +11,20 @@ import SpriteKit
 
 class RNHero: SKSpriteNode {
     
+    // Characters body
     var body: SKSpriteNode!
+    
+    // Characters arm
     var arm: SKSpriteNode!
+    
+    // Characters left foot
     var leftFoot: SKSpriteNode!
+    
+    // Characters right foot
     var rightFoot: SKSpriteNode!
+    
+    // Characters position (up or down)
+    var isUpsideDown = false
     
     init() {
         super.init(texture: nil, color: UIColor.clear, size: CGSize(width: 32, height: 44))
@@ -85,7 +95,7 @@ class RNHero: SKSpriteNode {
         body.removeAllActions()
     }
     
-    // Rotates characters arm back to illustrate running action 
+    // Rotates characters arm back to illustrate running action
     func startRunning() {
         let rotateBack = SKAction.rotate(byAngle: -CGFloat(M_PI) / 2.0, duration: 0.1)
         arm.run(rotateBack)
@@ -105,5 +115,21 @@ class RNHero: SKSpriteNode {
                 })
             })
         }
+    }
+    
+    // Flips character to other side of ground
+    func flip() {
+        isUpsideDown = !isUpsideDown
+        var scale: CGFloat!
+        if isUpsideDown {
+            scale = -1.0
+        }
+        else {
+            scale = 1.0
+        }
+        let translate = SKAction.moveBy(x: 0, y: scale * (size.height + kMLGroundHeight), duration: 0.1)
+        let flip = SKAction.scaleY(to: scale, duration: 0.1)
+        run(translate)
+        run(flip)
     }
 }

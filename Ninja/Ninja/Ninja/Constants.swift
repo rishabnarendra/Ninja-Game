@@ -7,3 +7,6 @@
 //
 
 import Foundation
+import UIKit
+
+let kMLGroundHeight: CGFloat = 20
