@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF23DF5E22A1F6F300EF4FEC /* RNWallGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF23DF5D22A1F6F300EF4FEC /* RNWallGenerator.swift */; };
+		AF23DF6022A1F70D00EF4FEC /* RNWall.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF23DF5F22A1F70D00EF4FEC /* RNWall.swift */; };
 		AFA2D48B229904C500AC0869 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA2D48A229904C500AC0869 /* AppDelegate.swift */; };
 		AFA2D48F229904C500AC0869 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = AFA2D48E229904C500AC0869 /* Actions.sks */; };
 		AFA2D491229904C500AC0869 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA2D490229904C500AC0869 /* GameScene.swift */; };
@@ -39,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AF23DF5D22A1F6F300EF4FEC /* RNWallGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNWallGenerator.swift; sourceTree = "<group>"; };
+		AF23DF5F22A1F70D00EF4FEC /* RNWall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNWall.swift; sourceTree = "<group>"; };
 		AFA2D487229904C500AC0869 /* Ninja.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ninja.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFA2D48A229904C500AC0869 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFA2D48E229904C500AC0869 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
@@ -118,6 +122,8 @@
 				AFA2D4BE229B47A900AC0869 /* RNMovingGround.swift */,
 				AFA2D4C0229B81F000AC0869 /* RNHero.swift */,
 				AFB9EFF8229BCC5E0068BD4E /* Constants.swift */,
+				AF23DF5D22A1F6F300EF4FEC /* RNWallGenerator.swift */,
+				AF23DF5F22A1F70D00EF4FEC /* RNWall.swift */,
 			);
 			path = Ninja;
 			sourceTree = "<group>";
@@ -273,11 +279,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFA2D491229904C500AC0869 /* GameScene.swift in Sources */,
+				AF23DF5E22A1F6F300EF4FEC /* RNWallGenerator.swift in Sources */,
 				AFA2D493229904C500AC0869 /* GameViewController.swift in Sources */,
 				AFA2D4BF229B47A900AC0869 /* RNMovingGround.swift in Sources */,
 				AFA2D4C1229B81F000AC0869 /* RNHero.swift in Sources */,
 				AFA2D48B229904C500AC0869 /* AppDelegate.swift in Sources */,
 				AFB9EFF9229BCC5E0068BD4E /* Constants.swift in Sources */,
+				AF23DF6022A1F70D00EF4FEC /* RNWall.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

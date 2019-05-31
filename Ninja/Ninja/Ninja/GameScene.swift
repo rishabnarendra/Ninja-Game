@@ -33,14 +33,17 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // If game hasn't started, start the game
         if !isStarted {
             start()
         }
+        // Flip the hero to other side 
         else {
             hero.flip()
         }
     }
     
+    // Start moving the character
     func start() {
         isStarted = true
         hero.stop()
