@@ -42,6 +42,17 @@ class GameScene: SKScene {
         wallGenerator = RNWallGenerator(color: UIColor.clear, size: view.frame.size)
         wallGenerator.position = view.center
         addChild(wallGenerator)
+        
+        // Add start game label
+        let start = SKLabelNode(text: "Tap to Start!")
+        start.name = "tapToStart"
+        start.position.x = view.center.x
+        start.position.y = view.center.y + 40
+        start.fontSize = 30.0
+        start.fontColor = UIColor.black
+        start.fontName = "Helvetica"
+        addChild(start)
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -58,6 +69,8 @@ class GameScene: SKScene {
     // Start moving the character
     func start() {
         isStarted = true
+        let tapToStart = childNode(withName: "tapToStart")
+        tapToStart?.removeFromParent()
         hero.stop()
         hero.startRunning()
         movingGround.startMovement()
