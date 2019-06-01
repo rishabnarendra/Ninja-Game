@@ -25,7 +25,7 @@ class RNWall: SKSpriteNode {
     }
     
     func startMoving() {
-        let moveLeft = SKAction.moveBy(x: -300, y: 0, duration: 1)
+        let moveLeft = SKAction.moveBy(x: -kDefaultMoveX, y: 0, duration: 1)
         run(SKAction.repeatForever(moveLeft))
     }
 }

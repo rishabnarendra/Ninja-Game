@@ -28,7 +28,7 @@ class GameScene: SKScene {
         backgroundColor = UIColor(red: 159.0/255.0, green: 201.0/255.0, blue: 244.0/255.0, alpha: 1.0)
         
         // Add ground
-        movingGround = RNMovingGround(size: CGSize(width: view.frame.width, height: kMLGroundHeight))
+        movingGround = RNMovingGround(size: CGSize(width: view.frame.width, height: kRNGroundHeight))
         movingGround.position = CGPoint(x: 0, y: view.frame.size.height / 2)
         addChild(movingGround)
         

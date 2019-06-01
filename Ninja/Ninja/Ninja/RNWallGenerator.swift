@@ -13,10 +13,12 @@ class RNWallGenerator: SKSpriteNode {
     
     var generationTimer: Timer?
     
+    // Generate wall every n seconds
     func startGeneratingWalls(seconds: TimeInterval) {
         generationTimer = Timer.scheduledTimer(timeInterval: seconds, target: self, selector: #selector(generateWall), userInfo: nil, repeats: true)
     }
     
+    // Generate wall randomnly on each side of the ground 
     @objc func generateWall() {
         var scale: CGFloat
         let rand = arc4random_uniform(2)
@@ -28,7 +30,7 @@ class RNWallGenerator: SKSpriteNode {
         }
         let wall = RNWall()
         wall.position.x = size.width / 2 + wall.size.width / 2
-        wall.position.y = scale * ((kMLGroundHeight / 2) + (wall.size.height / 2))
+        wall.position.y = scale * ((kRNGroundHeight / 2) + (wall.size.height / 2))
         addChild(wall)
     }
     

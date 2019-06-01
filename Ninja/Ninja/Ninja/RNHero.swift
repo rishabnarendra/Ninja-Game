@@ -127,7 +127,7 @@ class RNHero: SKSpriteNode {
         else {
             scale = 1.0
         }
-        let translate = SKAction.moveBy(x: 0, y: scale * (size.height + kMLGroundHeight), duration: 0.1)
+        let translate = SKAction.moveBy(x: 0, y: scale * (size.height + kRNGroundHeight), duration: 0.1)
         let flip = SKAction.scaleY(to: scale, duration: 0.1)
         run(translate)
         run(flip)

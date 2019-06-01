@@ -9,4 +9,6 @@
 import Foundation
 import UIKit
 
-let kMLGroundHeight: CGFloat = 20
+let kRNGroundHeight: CGFloat = 20
+
+let kDefaultMoveX: CGFloat = 320.0
