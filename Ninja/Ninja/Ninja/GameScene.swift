@@ -72,11 +72,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         start.fontColor = UIColor.black
         start.fontName = "Helvetica"
         addChild(start)
+        start.run(blinkAnimation())
     }
     
     // Add physics world
     func addPhysicsWorld() {
         physicsWorld.contactDelegate = self
+    }
+    
+    func blinkAnimation() -> SKAction {
+        let duration = 0.4
+        let fadeOut = SKAction.fadeAlpha(to: 0.0, duration: duration)
+        let fadeIn = SKAction.fadeAlpha(to: 1.0, duration: duration)
+        let blink = SKAction.sequence([fadeOut, fadeIn])
+        return SKAction.repeatForever(blink)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -123,6 +132,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         gameOver.fontColor = UIColor.black
         gameOver.fontName = "Helvetica"
         addChild(gameOver)
+        gameOver.run(blinkAnimation())
     }
     
     // Restart the game
@@ -133,6 +143,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
-        end()
+        if !isGameOver {
+            end()
+        }
     }
 }
