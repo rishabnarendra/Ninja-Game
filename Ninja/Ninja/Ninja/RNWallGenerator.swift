@@ -16,6 +16,9 @@ class RNWallGenerator: SKSpriteNode {
     // Keep track of generated walls
     var walls = [RNWall]()
     
+    // Keep track of passed walls for incrementing game points
+    var wallTracker = [RNWall]()
+    
     // Generate wall every n seconds
     func startGeneratingWalls(seconds: TimeInterval) {
         generationTimer = Timer.scheduledTimer(timeInterval: seconds, target: self, selector: #selector(generateWall), userInfo: nil, repeats: true)
@@ -35,6 +38,7 @@ class RNWallGenerator: SKSpriteNode {
         wall.position.x = size.width / 2 + wall.size.width / 2
         wall.position.y = scale * ((kRNGroundHeight / 2) + (wall.size.height / 2))
         walls.append(wall)
+        wallTracker.append(wall)
         addChild(wall)
     }
     

@@ -80,9 +80,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func addPointsLabel() {
         let pointsLabel = RNPointsLabel(num: 0)
         pointsLabel.position = CGPoint(x: 20.0, y: view!.frame.size.height - 35)
+        pointsLabel.name = "pointsLabel"
         addChild(pointsLabel)
         let highScoreLabel = RNPointsLabel(num: 0)
         highScoreLabel.position = CGPoint(x: view!.frame.size.width - 20, y: view!.frame.size.height - 35)
+        highScoreLabel.name = "highScoreLabel"
         addChild(highScoreLabel)
         
         let highScoreTextLabel = SKLabelNode(text: "High")
@@ -163,6 +165,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
         if !isGameOver {
             end()
+        }
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        // Update score after passing a wall
+        if wallGenerator.wallTracker.count > 0 {
+            let wall = wallGenerator.wallTracker[0] as RNWall
+            let wallLocation = wallGenerator.convert(wall.position, to: self)
+            if wallLocation.x < hero.position.x {
+                wallGenerator.wallTracker.remove(at: 0)
+                let pointsLabel = childNode(withName: "pointsLabel") as! RNPointsLabel
+                pointsLabel.increment()
+            }
         }
     }
 }
