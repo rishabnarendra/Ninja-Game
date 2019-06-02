@@ -32,6 +32,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addHero()
         addWalls()
         addStartGameLabel()
+        addPointsLabel()
         addPhysicsWorld()
     }
     
@@ -73,6 +74,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         start.fontName = "Helvetica"
         addChild(start)
         start.run(blinkAnimation())
+    }
+    
+    // Add points label
+    func addPointsLabel() {
+        let pointsLabel = RNPointsLabel(num: 0)
+        pointsLabel.position = CGPoint(x: 20.0, y: view!.frame.size.height - 35)
+        addChild(pointsLabel)
+        let highScoreLabel = RNPointsLabel(num: 0)
+        highScoreLabel.position = CGPoint(x: view!.frame.size.width - 20, y: view!.frame.size.height - 35)
+        addChild(highScoreLabel)
+        
+        let highScoreTextLabel = SKLabelNode(text: "High")
+        highScoreTextLabel.fontColor = UIColor.black
+        highScoreTextLabel.fontSize = 14.0
+        highScoreTextLabel.fontName = "Helvetica"
+        highScoreTextLabel.position = CGPoint(x: 0, y: -30)
+        highScoreLabel.addChild(highScoreTextLabel)
     }
     
     // Add physics world
