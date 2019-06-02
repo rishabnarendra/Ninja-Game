@@ -61,8 +61,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // If game is over, restart the game
+        if isGameOver {
+            restart()
+        }
         // If game hasn't started, start the game
-        if !isStarted {
+        else if !isStarted {
             start()
         }
         // Flip the hero to other side 
@@ -91,6 +95,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         wallGenerator.stopWalls()
         movingGround.stopMovement()
         hero.stop()
+        
+        // Create game over label
+        let gameOver = SKLabelNode(text: "Game Over!")
+        gameOver.position.x = view!.center.x
+        gameOver.position.y = view!.center.y + 40
+        gameOver.fontSize = 30.0
+        gameOver.fontColor = UIColor.black
+        gameOver.fontName = "Helvetica"
+        addChild(gameOver)
+    }
+    
+    // Restart the game
+    func restart() {
+        let newScene = GameScene(size: view!.bounds.size)
+        newScene.scaleMode = .aspectFill
+        view!.presentScene(newScene)
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
