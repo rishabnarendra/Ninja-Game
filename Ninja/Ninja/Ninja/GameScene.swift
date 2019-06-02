@@ -26,6 +26,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // Game walls
     var wallGenerator: RNWallGenerator!
     
+    // Level of game based on how many walls have been passed
+    var currentLevel = 0
+    
     override func didMove(to view: SKView) {
         addBackgroundColor()
         addMovingGround()
@@ -194,6 +197,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 wallGenerator.wallTracker.remove(at: 0)
                 let pointsLabel = childNode(withName: "pointsLabel") as! RNPointsLabel
                 pointsLabel.increment()
+                
+                // Increase the speed of the walls generating
+                if pointsLabel.number % kNumberOfPointsPerLevel == 0 {
+                    if currentLevel != 4 {
+                        currentLevel += 1
+                    }
+                    wallGenerator.stopGenerating()
+                    wallGenerator.startGeneratingWalls(seconds: kLevelGenerationTime[currentLevel])
+                }
             }
         }
     }
