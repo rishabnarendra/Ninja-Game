@@ -161,4 +161,13 @@ class RNHero: SKSpriteNode {
         run(translate)
         run(flip)
     }
+    
+    //  Falling animation upon collision
+    func fall() {
+        physicsBody?.affectedByGravity = true
+        physicsBody?.applyImpulse(CGVector(dx: -5, dy: 30))
+        
+        let rotateBack = SKAction.rotate(byAngle: CGFloat(Double.pi / 2), duration: 0.4)
+        run(rotateBack)
+    }
 }

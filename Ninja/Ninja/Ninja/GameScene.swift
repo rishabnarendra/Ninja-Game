@@ -27,36 +27,55 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var wallGenerator: RNWallGenerator!
     
     override func didMove(to view: SKView) {
-        // Add background color
+        addBackgroundColor()
+        addMovingGround()
+        addHero()
+        addWalls()
+        addStartGameLabel()
+        addPhysicsWorld()
+    }
+    
+    // Add background color
+    func addBackgroundColor() {
         backgroundColor = UIColor(red: 159.0/255.0, green: 201.0/255.0, blue: 244.0/255.0, alpha: 1.0)
-        
-        // Add ground
-        movingGround = RNMovingGround(size: CGSize(width: view.frame.width, height: kRNGroundHeight))
-        movingGround.position = CGPoint(x: 0, y: view.frame.size.height / 2)
+    }
+    
+    // Add ground
+    func addMovingGround() {
+        movingGround = RNMovingGround(size: CGSize(width: view!.frame.width, height: kRNGroundHeight))
+        movingGround.position = CGPoint(x: 0, y: view!.frame.size.height / 2)
         addChild(movingGround)
-        
-        // Add hero
+    }
+    
+    // Add hero
+    func addHero() {
         hero = RNHero()
         hero.position = CGPoint(x: 70, y: movingGround.position.y + movingGround.frame.size.height / 2 + hero.frame.size.height / 2)
         addChild(hero)
         hero.breath()
-        
-        // Add walls
-        wallGenerator = RNWallGenerator(color: UIColor.clear, size: view.frame.size)
-        wallGenerator.position = view.center
+    }
+    
+    // Add walls
+    func addWalls() {
+        wallGenerator = RNWallGenerator(color: UIColor.clear, size: view!.frame.size)
+        wallGenerator.position = view!.center
         addChild(wallGenerator)
-        
-        // Add start game label
+    }
+    
+    // Add start game label
+    func addStartGameLabel() {
         let start = SKLabelNode(text: "Tap to Start!")
         start.name = "tapToStart"
-        start.position.x = view.center.x
-        start.position.y = view.center.y + 40
+        start.position.x = view!.center.x
+        start.position.y = view!.center.y + 40
         start.fontSize = 30.0
         start.fontColor = UIColor.black
         start.fontName = "Helvetica"
         addChild(start)
-        
-        // Add physics world
+    }
+    
+    // Add physics world
+    func addPhysicsWorld() {
         physicsWorld.contactDelegate = self
     }
     
@@ -91,7 +110,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         isGameOver = true
         
         // Stop everything
-        hero.physicsBody = nil
+        hero.fall()
         wallGenerator.stopWalls()
         movingGround.stopMovement()
         hero.stop()
