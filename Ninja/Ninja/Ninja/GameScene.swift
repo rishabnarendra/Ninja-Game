@@ -34,6 +34,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addStartGameLabel()
         addPointsLabel()
         addPhysicsWorld()
+        loadHighScore()
     }
     
     // Add background color
@@ -100,6 +101,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.contactDelegate = self
     }
     
+    // Load high score
+    func loadHighScore() {
+        let defaults = UserDefaults.standard
+        let highScoreLabel = childNode(withName: "highScoreLabel") as! RNPointsLabel
+        highScoreLabel.setTo(num: defaults.integer(forKey: "highscore"))
+    }
+    
     func blinkAnimation() -> SKAction {
         let duration = 0.4
         let fadeOut = SKAction.fadeAlpha(to: 0.0, duration: duration)
@@ -153,6 +161,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         gameOver.fontName = "Helvetica"
         addChild(gameOver)
         gameOver.run(blinkAnimation())
+        
+        // Save points label value to high score
+        let pointsLabel = childNode(withName: "pointsLabel") as! RNPointsLabel
+        let highScoreLabel = childNode(withName: "highScoreLabel") as! RNPointsLabel
+        if highScoreLabel.number < pointsLabel.number {
+            highScoreLabel.setTo(num: pointsLabel.number)
+            let defaults = UserDefaults.standard
+            defaults.set(highScoreLabel.number, forKey: "highscore")
+        }
     }
     
     // Restart the game
