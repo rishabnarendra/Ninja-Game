@@ -9,7 +9,7 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // Game ground
     var movingGround: RNMovingGround!
@@ -19,6 +19,9 @@ class GameScene: SKScene {
     
     // Has the game started
     var isStarted = false
+    
+    // Has the game ended
+    var isGameOver = false
     
     // Game walls
     var wallGenerator: RNWallGenerator!
@@ -53,6 +56,8 @@ class GameScene: SKScene {
         start.fontName = "Helvetica"
         addChild(start)
         
+        // Add physics world
+        physicsWorld.contactDelegate = self
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -75,5 +80,20 @@ class GameScene: SKScene {
         hero.startRunning()
         movingGround.startMovement()
         wallGenerator.startGeneratingWalls(seconds: 1)
+    }
+    
+    // Game over
+    func end() {
+        isGameOver = true
+        
+        // Stop everything
+        hero.physicsBody = nil
+        wallGenerator.stopWalls()
+        movingGround.stopMovement()
+        hero.stop()
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        end()
     }
 }

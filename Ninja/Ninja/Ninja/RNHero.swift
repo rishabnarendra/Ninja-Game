@@ -27,14 +27,28 @@ class RNHero: SKSpriteNode {
     var isUpsideDown = false
     
     init() {
-        super.init(texture: nil, color: UIColor.clear, size: CGSize(width: 32, height: 44))
+        let size = CGSize(width: 32, height: 44)
+        super.init(texture: nil, color: UIColor.clear, size: size)
         
-        // Body of our hero
+        // Create character
+        loadBody()
+        loadFace()
+        loadArms()
+        loadFeet()
+
+        // Collision detection
+        loadPhysicsBody(size: size)
+    }
+    
+    // Body of our hero
+    func loadBody() {
         body = SKSpriteNode(color: UIColor.black, size: CGSize(width: self.frame.size.width, height: 40))
         body.position = CGPoint(x: 0, y: 2)
         addChild(body)
-        
-        // Face of our hero
+    }
+    
+    // Face of our hero
+    func loadFace() {
         let skinColor = UIColor(red: 207.0/255.0, green: 193.0/255.0, blue: 168.0/255.0, alpha: 1.0)
         let face = SKSpriteNode(color: skinColor, size: CGSize(width: self.frame.size.width, height: 12))
         face.position = CGPoint(x: 0, y: 6)
@@ -58,8 +72,11 @@ class RNHero: SKSpriteNode {
         eyebrow.position = CGPoint(x: -1, y: leftEye.size.height / 2)
         leftEye.addChild(eyebrow)
         rightEye.addChild(eyebrow.copy() as! SKSpriteNode)
-        
-        // Arm and hand of our hero
+    }
+    
+    // Arm and hand of our hero
+    func loadArms() {
+        let skinColor = UIColor(red: 207.0/255.0, green: 193.0/255.0, blue: 168.0/255.0, alpha: 1.0)
         let armColor = UIColor(red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0)
         arm = SKSpriteNode(color: armColor, size: CGSize(width: 8, height: 14))
         arm.anchorPoint = CGPoint(x: 0.5, y: 0.9)
@@ -68,14 +85,24 @@ class RNHero: SKSpriteNode {
         let hand = SKSpriteNode(color: skinColor, size: CGSize(width: arm.size.width, height: 5))
         hand.position = CGPoint(x: 0, y: (-arm.size.height * 0.9) + (hand.size.height / 2))
         arm.addChild(hand)
-        
-        // Feet of our hero
+    }
+    
+    // Feet of our hero
+    func loadFeet() {
         leftFoot = SKSpriteNode(color: UIColor.black, size: CGSize(width: 9, height: 4))
         leftFoot.position = CGPoint(x: -6, y: (-size.height / 2) + (leftFoot.size.height / 2))
         addChild(leftFoot)
         rightFoot = leftFoot.copy() as! SKSpriteNode
         rightFoot.position.x = 8
         addChild(rightFoot)
+    }
+    
+    // Collision detection
+    func loadPhysicsBody(size: CGSize) {
+        physicsBody = SKPhysicsBody(rectangleOf: size)
+        physicsBody?.categoryBitMask = heroCategory
+        physicsBody?.contactTestBitMask = wallCategory
+        physicsBody?.affectedByGravity = false 
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -90,9 +117,11 @@ class RNHero: SKSpriteNode {
         body.run(SKAction.repeatForever(breath))
     }
     
-    // Stops character breathing upon screen click
+    // Stops character breathing and foot movement upon screen click
     func stop() {
         body.removeAllActions()
+        leftFoot.removeAllActions()
+        rightFoot.removeAllActions()
     }
     
     // Rotates characters arm back to illustrate running action

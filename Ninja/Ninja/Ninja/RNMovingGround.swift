@@ -40,6 +40,7 @@ class RNMovingGround: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // Start ground movement
     func startMovement(){
         // Sequence to move left and then reset the position of the ground and walls
         let duration = TimeInterval(frame.size.width / kDefaultMoveX)
@@ -48,5 +49,10 @@ class RNMovingGround: SKSpriteNode {
         
         let moveSequence = SKAction.sequence([moveLeft, resetPosition])
         run(SKAction.repeatForever(moveSequence))
+    }
+    
+    // Stop ground movement
+    func stopMovement() {
+        removeAllActions()
     }
 }
